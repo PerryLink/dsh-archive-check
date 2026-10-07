@@ -1,0 +1,200 @@
+# 档案归档核对 规则库
+#
+# 规则数据与代码分离：替换本文件即可切换规则集版本，无需改动 TypeScript。
+#
+# 条款引用纪律（由 shared/ruleset.ts 强制校验）：
+#   - 每条规则必须写全 document / number / clause / excerpt / kind / source，
+#     且 excerpt 必须是逐字摘录，不得改写。
+#   - kind: direct                       条款直接规定了所检查的要求
+#   - kind: derived-from-principle       条款未直接规定，仅能由原则性条款推论（severity 最多 warn）
+#   - kind: institutional-configuration 阈值出自本机构配置（severity 最多 info）
+#
+# ✅ 本次核查已取得 A 级逐字原文，可放心引用：
+#   - 《中华人民共和国档案法》（2020-06-20 修订，主席令第四十七号，2021-01-01 施行）第十三/十四/十五/二十一/三十七/三十九条
+#   - 《中华人民共和国档案法实施条例》（**国务院令第772号**，2024-01-12 公布，**2024-03-01 施行**，
+#     第五十二条明文废止 1999 年《档案法实施办法》）第十九/二十/二十四/三十九/四十条
+#   - 《机关文件材料归档范围和文书档案保管期限规定》（国家档案局令第8号）第三/四/六/十二/十四条
+#   - 《企业文件材料归档范围和档案保管期限规定》（国家档案局令第10号）第七/十一/十五/十六条
+#
+# ⚠️ 三处必须记住的陷阱（核查中已确认）：
+#   1. **移交年限只出现在《实施条例》第二十条第二款，不在《档案法》第十五条。**
+#      《档案法》第十五条只写"按照国家有关规定，定期"，**不含任何年限**。
+#      把"满20年/满10年"写进《档案法》第十五条即为编造。本规则库只按实施条例引用。
+#   2. **不存在全国通用、可直接适用的唯一保管期限表。** 《实施条例》第十九条第二款与
+#      令第8号第十二条要求**各单位自编并报同级档案主管部门审核同意**；
+#      令第10号第十一条更明确企业"管理类档案保管期限为**最低期限**"，企业可选择**高于**规定期限。
+#      → 因此本插件只校验"期限值是否落在 {永久, 定期30年, 定期10年} 内"，
+#        **绝不按某张全国表判定某份文件应为何期限**，也**绝不把高于规定期限判为错误**。
+#   3. **令第8号第一条不可引用**：该条援引的《档案法实施办法》已于 2024-03-01 废止，文本滞后。
+#
+# ⚠️ 本插件**不判断某份文件是否应当归档**、**不判断保管期限划得对不对**。
+#   那需要档案人员对照本单位报审的期限表逐条判断。本插件只做机械可判定的事项：
+#   期限值合法性、编号唯一与连续、日期可解析、著录栏目是否填齐、移交期限是否到期。
+#   → requiredFields 与 retentionTerms 两个本机构清单**出厂为空**，未配置即进 skipped。
+
+plugin: dsh-archive-check
+version: "2026.1"
+
+rules:
+  - id: AR-001
+    title: 归档条目应著录本机构要求的项目
+    severity: info
+    basis:
+      document: 《归档文件整理规则》
+      number: DA/T 22—2015
+      clause: 5.5.2
+      excerpt: 归档文件应逐件编目。来文与复文作为一件时，对复文的编目应体现来文内容。归档文件目录设置序号、档号、文号、责任者、题名、日期、密级、页数、备注等项目。
+      kind: institutional-configuration
+      source: https://www.hainan.gov.cn/szfbgt/sdaj/1400/201911/5fdfc28ec16c441093bb01663b83336a.shtml
+    alsoBasis:
+      - document: 《中华人民共和国档案法实施条例》
+        number: 国务院令第772号
+        clause: 第十九条第一款
+        excerpt: 依照《档案法》第十三条以及国家有关规定应当归档的材料，由机关、团体、企业事业单位和其他组织的各内设机构收集齐全，规范整理，定期交本单位档案机构或者档案工作人员集中管理，任何内设机构和个人不得拒绝归档或者据为己有。
+        kind: direct
+        source: https://www.gov.cn/zhengce/zhengceku/202401/content_6928164.htm
+    params:
+      requiredFields: []
+    note: >-
+      requiredFields 出厂为空，表示**未配置**，本条进 skipped。
+      DA/T 22—2015 5.5.2 给出了目录的九个项目（序号、档号、文号、责任者、题名、日期、密级、页数、备注），
+      但**各机构的必填范围不同**，故由使用方填入本机构的必填栏目（须与材料中的列名一致）。
+      本条只核对字段是否存在（空串视为未填），**不判断著录内容是否准确**。
+
+  - id: AR-002
+    title: 档号在同一登记范围内应唯一
+    severity: warn
+    basis:
+      document: 《归档文件整理规则》
+      number: DA/T 22—2015
+      clause: 5.4.1
+      excerpt: 归档文件应依分类方案和排列顺序编写档号。档号编制应遵循唯一性、合理性、稳定性、扩充性、简单性原则。
+      kind: derived-from-principle
+      source: https://www.hainan.gov.cn/szfbgt/sdaj/1400/201911/5fdfc28ec16c441093bb01663b83336a.shtml
+    params: {}
+    note: >-
+      5.4.1 明列"唯一性"为档号编制原则之一，故本条有明确出处；但该条是**原则性**表述，
+      并非"同一登记表内不得重复"的逐字规定，故封顶 warn。
+      比较时忽略空白字符，因此「A-2026-001」与「A-2026- 001」视为同一档号。
+      命中通常意味着重复登记或档号填错，需人工确认。
+
+  - id: AR-003
+    title: 保管期限应使用本机构保管期限表的用词
+    severity: info
+    basis:
+      document: 《机关文件材料归档范围和文书档案保管期限规定》
+      number: 国家档案局令第8号
+      clause: 第六条
+      excerpt: 机关文书档案的保管期限定为永久、定期两种。定期一般分为30年、10年。
+      kind: institutional-configuration
+      source: https://www.gov.cn/zhengce/2006-12/18/content_5726800.htm
+    alsoBasis:
+      - document: 《中华人民共和国档案法实施条例》
+        number: 国务院令第772号
+        clause: 第十九条第二款
+        excerpt: 机关、群团组织、国有企业事业单位应当明确本单位的归档范围和档案保管期限，经同级档案主管部门审核同意后施行。
+        kind: direct
+        source: https://www.gov.cn/zhengce/zhengceku/202401/content_6928164.htm
+      - document: 《企业文件材料归档范围和档案保管期限规定》
+        number: 国家档案局令第10号
+        clause: 第十一条
+        excerpt: 本规定的管理类档案保管期限为最低期限，各企业在具体划分时可选择高于本规定的期限。
+        kind: direct
+        source: https://www.gov.cn/gongbao/content/2013/content_2361577.htm
+    params:
+      retentionTerms: []
+    note: >-
+      retentionTerms 出厂为空，表示**未配置**，本条进 skipped。
+      **框架有明文，具体划分权在单位**：令第8号第六条把期限定为"永久、定期两种，定期一般分为30年、10年"；
+      但《实施条例》第十九条第二款与令第8号第十二条要求**各单位自编期限表并报同级档案主管部门审核同意**。
+      企业侧更明确：令第10号第十一条写的是"**最低期限**"，企业可选择**高于**规定期限——**这不是错误**。
+      → 因此本条只校验用词是否落在本机构配置的清单内；
+        若要按国家框架校验，把 retentionTerms 配成 [永久, 定期30年, 定期10年] 即可。
+      → **本插件绝不按某张全国表判定某份文件应为何期限。**
+      解析器可识别「永久」「长期」「定期N年」「N年」；识别不了的值会单独报"不是可识别的期限用词"，
+      与"不在本机构清单内"是两条不同的信息，因为对应两种不同的修法。
+
+  - id: AR-004
+    title: 件号应在同一登记范围内唯一且连续
+    severity: warn
+    basis:
+      document: 《归档文件整理规则》
+      number: DA/T 22—2015
+      clause: 5.4.3 e)
+      excerpt: 件号是单件归档文件在分类方案最低一级类目内的排列顺序号，用4位阿拉伯数字标识，不足4位的，前面用"0"补足，如"0026"。
+      kind: derived-from-principle
+      source: https://www.hainan.gov.cn/szfbgt/sdaj/1400/201911/5fdfc28ec16c441093bb01663b83336a.shtml
+    params:
+      checkSequence: true
+    note: >-
+      5.4.3 e) 规定件号是"**排列顺序号**"，顺序号唯一连续是排列可复核的前提；
+      但该条未逐字写"不得缺号"，故封顶 warn。
+      本条只对**纯数字件号**做连续性核对；含字母或空格的件号不参与、也不报差异。
+      缺号本身不构成问题（可能未使用），命中只提示核对是否漏登记，需人工确认。
+      checkSequence 为 false 时本条不执行。
+
+  - id: AR-005
+    title: 形成日期应可解析，且与登记年度一致
+    severity: warn
+    basis:
+      document: 《归档文件整理规则》
+      number: DA/T 22—2015
+      clause: 5.3.1
+      excerpt: 归档文件应在分类方案的最低一级类目内，按时间结合事由排列。
+      kind: derived-from-principle
+      source: https://www.hainan.gov.cn/szfbgt/sdaj/1400/201911/5fdfc28ec16c441093bb01663b83336a.shtml
+    params: {}
+    note: >-
+      5.3.1 要求"按时间结合事由排列"，日期可解析是据此排列的前提；未逐字规定日期写法，故封顶 warn。
+      跨年度归档是允许的，命中只提示核对，**不判断该文件应归入哪一年**。
+      识别不了的值（例如「二〇二六年三月十五日」）会报"无法解析"，这与年度不一致是两条不同的信息。
+
+  - id: AR-006
+    title: 登记表应声明全宗与年度
+    severity: warn
+    basis:
+      document: 《归档文件整理规则》
+      number: DA/T 22—2015
+      clause: 5.2.2
+      excerpt: 归档文件一般采用年度—机构（问题）—保管期限、年度—保管期限—机构（问题）等方法进行三级分类。
+      kind: derived-from-principle
+      source: https://www.hainan.gov.cn/szfbgt/sdaj/1400/201911/5fdfc28ec16c441093bb01663b83336a.shtml
+    params:
+      requireHeader: true
+    note: >-
+      5.2.2 的三级分类方法以**年度**为第一级，故登记表未声明年度时按年度核对无法执行；
+      本条把这件事显式报出来，避免"没查出问题"被读成"没有问题"。
+      未逐字规定登记表表头，故封顶 warn。requireHeader 为 false 时本条不执行。
+
+  - id: AR-007
+    title: 按本机构配置核对移交期限是否已到
+    severity: info
+    basis:
+      document: 《中华人民共和国档案法实施条例》
+      number: 国务院令第772号
+      clause: 第二十条第二款
+      excerpt: 属于中央级和省级、设区的市级国家档案馆接收范围的档案，移交单位应当自档案形成之日起满二十年即向有关的国家档案馆移交。属于县级国家档案馆接收范围的档案，移交单位应当自档案形成之日起满十年即向有关的县级国家档案馆移交。
+      kind: institutional-configuration
+      source: https://www.gov.cn/zhengce/zhengceku/202401/content_6928164.htm
+    alsoBasis:
+      - document: 《中华人民共和国档案法》
+        number: 2020年修订（主席令第四十七号）
+        clause: 第十五条
+        excerpt: 机关、团体、企业事业单位和其他组织应当按照国家有关规定，定期向档案馆移交档案，档案馆不得拒绝接收。
+        kind: direct
+        source: https://rfb.henan.gov.cn/2021/05-14/2144560.html
+    params:
+      transferAfterYears: 0
+      requireFormedAt: false
+    note: >-
+      transferAfterYears 出厂为 0，表示**未配置**，本条进 skipped。
+      **年限的出处必须记准**：20 年 / 10 年的数字**只出现在《实施条例》第二十条第二款**，
+      按**档案馆层级**区分（中央级、省级、设区的市级 = 20 年；县级 = 10 年），**不按机关/企业区分**；
+      该款主体含"企业事业单位"，故企业适用同一规则。
+      《档案法》第十五条**不含任何年限**（只写"按照国家有关规定，定期"）——不得把年限挂到该条。
+      未检到针对企业的专门移交期限规定，因此本插件**不假定企业另有期限**；
+      如所属行业另有规定，应由使用方按行业规定配置本参数。
+      requireFormedAt 为 true 时，缺少形成日期的条目会单独报出，因为无法据以推算到期日。
+      本条只算出"按配置年限是否已到期"，**不判断是否应当延长或提前移交**。
+
+disabled: []

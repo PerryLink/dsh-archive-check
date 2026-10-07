@@ -1,0 +1,30 @@
+{
+  "ruleId": "AR-001",
+  "configure": {
+    "AR-001": {
+      "requiredFields": [
+        "档号",
+        "题名",
+        "保管期限"
+      ]
+    }
+  },
+  "pairs": [
+    {
+      "name": "expected-state",
+      "material": "AR-001-compliant.json",
+      "expect": {
+        "ruleId": "AR-001",
+        "count": 0
+      }
+    },
+    {
+      "name": "difference-present",
+      "material": "AR-001-unsafe.json",
+      "expect": {
+        "ruleId": "AR-001",
+        "count": 1
+      }
+    }
+  ]
+}

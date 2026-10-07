@@ -1,0 +1,30 @@
+{
+  "ruleId": "AR-003",
+  "configure": {
+    "AR-003": {
+      "retentionTerms": [
+        "永久",
+        "定期30年",
+        "定期10年"
+      ]
+    }
+  },
+  "pairs": [
+    {
+      "name": "expected-state",
+      "material": "AR-003-compliant.json",
+      "expect": {
+        "ruleId": "AR-003",
+        "count": 0
+      }
+    },
+    {
+      "name": "difference-present",
+      "material": "AR-003-unsafe.json",
+      "expect": {
+        "ruleId": "AR-003",
+        "count": 1
+      }
+    }
+  ]
+}

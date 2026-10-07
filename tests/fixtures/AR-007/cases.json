@@ -1,0 +1,27 @@
+{
+  "ruleId": "AR-007",
+  "purpose": "按本机构配置核对移交期限是否已到（年限出自《档案法实施条例》第二十条第二款，按档案馆层级区分）",
+  "configure": {
+    "AR-007": {
+      "transferAfterYears": 10
+    }
+  },
+  "pairs": [
+    {
+      "name": "expected-state",
+      "material": "AR-007-compliant.json",
+      "expect": {
+        "ruleId": "AR-007",
+        "count": 0
+      }
+    },
+    {
+      "name": "difference-present",
+      "material": "AR-007-unsafe.json",
+      "expect": {
+        "ruleId": "AR-007",
+        "count": 1
+      }
+    }
+  ]
+}
