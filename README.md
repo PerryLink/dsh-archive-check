@@ -1,4 +1,27 @@
-# dsh-archive-check
+# dsh-archive-check — Archive filing register completeness and retention period check
+
+`dsh-archive-check` reads one 归档登记表 (filing register) — the items with the columns the register carries, plus the fonds and the year it covers — and checks what a register can be held to mechanically: that each item carries the description fields you configure, that 档号 is unique within the register, that 件号 runs without gaps, that 保管期限 uses a term from your own schedule, that 形成日期 parses and matches the register's year, and that items past the transfer deadline you configure are surfaced.
+
+## What it answers
+
+| You ask | What it answers |
+|---|---|
+| I have configured no required description fields. Is the description check passing silently? | No. While `requiredFields` is empty, `AR-001` reports itself in `skipped`, so an empty difference list is not read as “nothing is missing”. Once you list your own column names, it checks only that each field is filled on every item — an empty string counts as unfilled — and it does not judge whether the description is accurate. |
+| Two items carry the same 档号, but one of them has a space in the middle. Is that still a duplicate? | Yes. `AR-002` compares 档号 ignoring whitespace, so 「A-2026-001」 and 「A-2026- 001」 count as the same number. It is capped at `warn` because the clause it cites states uniqueness as a compilation principle rather than as a verbatim ban on duplicates in one register, and a hit usually means duplicate registration or a mistyped 档号 that a person still has to confirm. |
+| The 保管期限 column says something our retention schedule does not list. What does the check report? | `AR-003` keeps two cases apart: a value the parser cannot read as a retention term at all (it recognises 「永久」, 「长期」, 「定期N年」 and 「N年」), and a recognisable term that is not in the `retentionTerms` list you configure. The two need different corrections, so they are reported as different messages. The rule never decides which retention period a document deserves, and a period longer than the national framework is not an error — the provisions the pack cites make the enterprise figures a minimum. |
+| The 件号 run 1, 2, 4 — is the missing 3 reported? | Yes, but only for 件号 written as pure digits: `AR-004` checks continuity only for those; a 件号 containing letters or spaces is left out of the comparison and reports no difference at all. A gap is not by itself a defect — the number may simply be unused — so a hit only asks you to confirm whether an item went unregistered. With `checkSequence: false` the rule does not run. |
+| The 形成日期 is written 「二〇二六年三月十五日」. Will that be read? | No. `AR-005` reports it as “cannot parse”, which is a different message from a date whose year disagrees with the register's year — the two point at different corrections. Filing across year boundaries is allowed, and the rule does not decide which year a document should be filed under. |
+| How does the check know that a transfer is due? | `AR-007` compares each item's 形成日期 with the `transferAfterYears` you configure and reports only whether that deadline has already passed under the years you set. The parameter ships as `0`, meaning unconfigured, so the rule reports itself in `skipped` until you set it; with `requireFormedAt: true`, items that have no 形成日期 are reported separately, because no due date can be worked out from a missing date. The rule does not judge whether a transfer should be brought forward or postponed. |
+
+## Standards it follows
+
+| Document | Number | Cited by rules |
+|---|---|---|
+| 《归档文件整理规则》 | DA/T 22—2015 | AR-001, AR-002, AR-004, AR-005, AR-006 |
+| 《中华人民共和国档案法实施条例》 | 国务院令第772号 | AR-001, AR-003, AR-007 |
+| 《机关文件材料归档范围和文书档案保管期限规定》 | 国家档案局令第8号 | AR-003 |
+| 《企业文件材料归档范围和档案保管期限规定》 | 国家档案局令第10号 | AR-003 |
+| 《中华人民共和国档案法》 | 2020年修订（主席令第四十七号） | AR-007 |
 
 **Boundary:** this plugin checks one **归档登记表** (filing register) for the things a register can be
 held to mechanically — that each item is described completely enough to be filed and found again, that

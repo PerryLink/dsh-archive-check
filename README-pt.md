@@ -1,4 +1,27 @@
-# dsh-archive-check
+# dsh-archive-check — Verificação da integridade do registo de arquivo e do prazo de conservação
+
+`dsh-archive-check` lê um 归档登记表 (registo de arquivo) —os itens com as colunas que o próprio registo traz, mais o fundo e o ano que abrange— e verifica o que um registo pode sustentar mecanicamente: se cada item traz os campos de descrição que você configurar, se o 档号 é único dentro do registo, se o 件号 corre sem falhas, se o 保管期限 usa um termo da sua própria tabela de prazos, se o 形成日期 é analisável e coincide com o ano do registo, e se são assinalados os itens que passaram do prazo de transferência que você configurar.
+
+## O que ele responde
+
+| Você pergunta | O que ele responde |
+|---|---|
+| Não configurei nenhum campo de descrição obrigatório. A verificação da descrição passa em silêncio? | Não. Enquanto `requiredFields` estiver vazio, o `AR-001` declara-se em `skipped`, de modo que uma lista de diferenças vazia não é lida como «não falta nada». Depois de indicar os nomes das suas colunas, verifica apenas que cada campo está preenchido em cada item —uma cadeia vazia conta como não preenchido— e não julga se a descrição está correta. |
+| Dois itens trazem o mesmo 档号, mas um tem um espaço no meio. Continua a ser duplicado? | Sim. O `AR-002` compara o 档号 ignorando os espaços, por isso 「A-2026-001」 e 「A-2026- 001」 contam como o mesmo número. Está limitado a `warn` porque a cláusula que cita enuncia a unicidade como princípio de elaboração, e não como proibição literal de repetir dentro do mesmo registo; um achado costuma significar registo duplicado ou 档号 mal escrito, que ainda tem de ser confirmado por uma pessoa. |
+| A coluna 保管期限 diz algo que a nossa tabela de prazos não prevê. O que é que a verificação reporta? | O `AR-003` separa dois casos: um valor que o analisador não reconhece como prazo (reconhece 「永久」「长期」「定期N年」「N年」) e um termo reconhecível que não está na lista `retentionTerms` que você configurar. As correções são diferentes, por isso as mensagens são diferentes. A regra nunca decide que prazo um documento merece, e um prazo mais longo do que o quadro nacional não é erro: as disposições citadas pelo pacote fixam as cifras para as empresas como mínimo. |
+| Os 件号 são 1, 2, 4 — o 3 em falta é reportado? | Sim, mas só para 件号 escritos com dígitos puros: o `AR-004` verifica a continuidade apenas nesses casos; um 件号 com letras ou espaços fica fora da comparação e não reporta diferença alguma. Uma falha não é por si só um defeito —pode o número não ter sido usado—, por isso o achado apenas pede que se confirme se algum item ficou por registar. Com `checkSequence: false` a regra não é executada. |
+| O 形成日期 está escrito como 「二〇二六年三月十五日」. É lido? | Não. O `AR-005` reporta-o como «não é possível analisar», que é uma mensagem diferente da de uma data cujo ano não coincide com o ano do registo: apontam para correções diferentes. Arquivar entre anos é permitido, e a regra não decide em que ano um documento deveria ficar. |
+| Como é que a verificação sabe que a transferência está a vencer? | O `AR-007` compara o 形成日期 de cada item com o `transferAfterYears` que você configurar e reporta apenas se esse prazo já passou segundo os anos fixados. O parâmetro vem de fábrica como `0`, ou seja, por configurar, por isso a regra declara-se em `skipped` até você o definir; com `requireFormedAt: true`, os itens sem 形成日期 são também reportados em separado, porque não há data a partir da qual calcular o vencimento. A regra não julga se a transferência deveria ser antecipada ou adiada. |
+
+## Normas que segue
+
+| Documento | Número | Regras que o citam |
+|---|---|---|
+| 《归档文件整理规则》 | DA/T 22—2015 | AR-001, AR-002, AR-004, AR-005, AR-006 |
+| 《中华人民共和国档案法实施条例》 | 国务院令第772号 | AR-001, AR-003, AR-007 |
+| 《机关文件材料归档范围和文书档案保管期限规定》 | 国家档案局令第8号 | AR-003 |
+| 《企业文件材料归档范围和档案保管期限规定》 | 国家档案局令第10号 | AR-003 |
+| 《中华人民共和国档案法》 | 2020年修订（主席令第四十七号） | AR-007 |
 
 **Boundary:** this plugin checks one **归档登记表** (filing register) for the things a register can be
 held to mechanically — that each item is described completely enough to be filed and found again, that

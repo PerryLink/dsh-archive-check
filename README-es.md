@@ -1,4 +1,27 @@
-# dsh-archive-check
+# dsh-archive-check — Comprobación de la integridad del registro de archivo y del plazo de conservación
+
+`dsh-archive-check` lee un 归档登记表 (registro de archivo) —los asientos con las columnas que el propio registro trae, más el fondo y el año que cubre— y comprueba lo que un registro puede sostener mecánicamente: que cada asiento lleve los campos de descripción que usted configure, que el 档号 sea único dentro del registro, que el 件号 corra sin huecos, que el 保管期限 use un término de su propia tabla de plazos, que el 形成日期 se pueda analizar y coincida con el año del registro, y que se señalen los asientos que hayan superado el plazo de transferencia que usted configure.
+
+## Qué responde
+
+| Usted pregunta | Qué responde |
+|---|---|
+| No he configurado ningún campo de descripción obligatorio. ¿La comprobación de la descripción pasa en silencio? | No. Mientras `requiredFields` esté vacío, `AR-001` se declara en `skipped`, de modo que una lista de diferencias vacía no se lee como «no falta nada». Cuando indique los nombres de sus columnas, solo comprueba que cada campo esté relleno en cada asiento —una cadena vacía cuenta como no relleno— y no juzga si la descripción es exacta. |
+| Dos asientos llevan el mismo 档号, pero uno tiene un espacio en medio. ¿Sigue siendo duplicado? | Sí. `AR-002` compara el 档号 ignorando los espacios, así que 「A-2026-001」 y 「A-2026- 001」 cuentan como el mismo número. Está limitado a `warn` porque la cláusula que cita enuncia la unicidad como principio de elaboración, y no como una prohibición literal de repetir dentro de un mismo registro; un hallazgo suele significar un registro duplicado o un 档号 mal escrito, que aún debe confirmar una persona. |
+| La columna 保管期限 dice algo que nuestra tabla de plazos no recoge. ¿Qué informa la comprobación? | `AR-003` separa dos casos: un valor que el analizador no reconoce como plazo (reconoce 「永久」「长期」「定期N年」「N年」) y un término reconocible que no está en la lista `retentionTerms` que usted configure. Las correcciones son distintas, por eso los mensajes son distintos. La regla nunca decide qué plazo merece un documento, y un plazo más largo que el marco nacional no es un error: las disposiciones que cita el paquete fijan las cifras de empresa como mínimo. |
+| Los 件号 son 1, 2, 4 — ¿se informa del 3 que falta? | Sí, pero solo para 件号 escritos con dígitos puros: `AR-004` comprueba la continuidad únicamente en esos casos; un 件号 con letras o espacios queda fuera de la comparación y no informa de ninguna diferencia. Un hueco no es por sí mismo un defecto —puede que ese número no se haya usado—, así que el hallazgo solo pide confirmar si algún asiento quedó sin registrar. Con `checkSequence: false` la regla no se ejecuta. |
+| El 形成日期 figura como 「二〇二六年三月十五日」. ¿Se lee? | No. `AR-005` lo informa como «no se puede analizar», que es un mensaje distinto del de una fecha cuyo año no coincide con el año del registro: apuntan a correcciones diferentes. Archivar entre años está permitido, y la regla no decide en qué año debería figurar un documento. |
+| ¿Cómo sabe la comprobación que ya toca transferir? | `AR-007` compara el 形成日期 de cada asiento con el `transferAfterYears` que usted configure e informa solo de si ese plazo ya venció según los años fijados. El parámetro sale de fábrica como `0`, es decir, sin configurar, así que la regla se declara en `skipped` hasta que usted lo fije; con `requireFormedAt: true` también se informa por separado de los asientos sin 形成日期, porque no hay fecha desde la que calcular el vencimiento. La regla no juzga si la transferencia debería adelantarse o aplazarse. |
+
+## Normas que sigue
+
+| Documento | Número | Reglas que lo citan |
+|---|---|---|
+| 《归档文件整理规则》 | DA/T 22—2015 | AR-001, AR-002, AR-004, AR-005, AR-006 |
+| 《中华人民共和国档案法实施条例》 | 国务院令第772号 | AR-001, AR-003, AR-007 |
+| 《机关文件材料归档范围和文书档案保管期限规定》 | 国家档案局令第8号 | AR-003 |
+| 《企业文件材料归档范围和档案保管期限规定》 | 国家档案局令第10号 | AR-003 |
+| 《中华人民共和国档案法》 | 2020年修订（主席令第四十七号） | AR-007 |
 
 **Boundary:** this plugin checks one **归档登记表** (filing register) for the things a register can be
 held to mechanically — that each item is described completely enough to be filed and found again, that
