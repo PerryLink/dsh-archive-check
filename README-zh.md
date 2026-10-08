@@ -45,8 +45,7 @@ belonged in the archive, nor which retention period it deserves. Those are the a
 ## Install
 
 ```sh
-pnpm pack
-dsh plugin --profile <name> add ./*.tgz
+dsh plugin --profile <name> add dsh-archive-check
 dsh --profile <name> --dump-config | grep 'dsh-archive-check'
 ```
 

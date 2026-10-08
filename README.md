@@ -56,8 +56,7 @@ plus the fonds and year it covers — applies a versioned rule pack, and returns
 ## Install
 
 ```sh
-pnpm pack
-dsh plugin --profile <name> add ./dsh-archive-check-0.1.0.tgz
+dsh plugin --profile <name> add dsh-archive-check
 dsh --profile <name> --dump-config | grep 'dsh-archive-check'
 ```
 
