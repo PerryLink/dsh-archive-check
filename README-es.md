@@ -1,6 +1,14 @@
 # dsh-archive-check — Comprobación de la integridad del registro de archivo y del plazo de conservación
 
+[![DSH Market](https://raw.githubusercontent.com/2BingLing/dsh-market/master/assets/readme/badge-listed-en.svg)](https://dsh.market/)
+
 `dsh-archive-check` lee un 归档登记表 (registro de archivo) —los asientos con las columnas que el propio registro trae, más el fondo y el año que cubre— y comprueba lo que un registro puede sostener mecánicamente: que cada asiento lleve los campos de descripción que usted configure, que el 档号 sea único dentro del registro, que el 件号 corra sin huecos, que el 保管期限 use un término de su propia tabla de plazos, que el 形成日期 se pueda analizar y coincida con el año del registro, y que se señalen los asientos que hayan superado el plazo de transferencia que usted configure.
+
+## Cómo se ve la salida
+
+![Terminal demo of dsh-archive-check: real output over its AR-002 fixture](https://raw.githubusercontent.com/PerryLink/dsh-archive-check/main/docs/assets/dsh-archive-check-demo.png)
+
+Salida real de este plugin sobre su propio fixture de prueba `AR-002` — no es un montaje. El paquete de reglas no inventa citas, así que cada hallazgo nombra la cláusula aplicada y advierte que su texto no se obtuvo.
 
 ## Qué responde
 

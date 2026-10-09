@@ -1,6 +1,14 @@
 # dsh-archive-check — Verificação da integridade do registo de arquivo e do prazo de conservação
 
+[![DSH Market](https://raw.githubusercontent.com/2BingLing/dsh-market/master/assets/readme/badge-listed-en.svg)](https://dsh.market/)
+
 `dsh-archive-check` lê um 归档登记表 (registo de arquivo) —os itens com as colunas que o próprio registo traz, mais o fundo e o ano que abrange— e verifica o que um registo pode sustentar mecanicamente: se cada item traz os campos de descrição que você configurar, se o 档号 é único dentro do registo, se o 件号 corre sem falhas, se o 保管期限 usa um termo da sua própria tabela de prazos, se o 形成日期 é analisável e coincide com o ano do registo, e se são assinalados os itens que passaram do prazo de transferência que você configurar.
+
+## Como é a saída
+
+![Terminal demo of dsh-archive-check: real output over its AR-002 fixture](https://raw.githubusercontent.com/PerryLink/dsh-archive-check/main/docs/assets/dsh-archive-check-demo.png)
+
+Saída real deste plugin sobre o seu próprio fixture de teste `AR-002` — não é uma simulação. O pacote de regras não inventa citações, por isso cada achado nomeia a cláusula aplicada e avisa que o seu texto não foi obtido.
 
 ## O que ele responde
 
