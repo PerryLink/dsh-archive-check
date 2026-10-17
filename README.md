@@ -4,6 +4,13 @@
 
 `dsh-archive-check` reads one 归档登记表 (filing register) — the items with the columns the register carries, plus the fonds and the year it covers — and checks what a register can be held to mechanically: that each item carries the description fields you configure, that 档号 is unique within the register, that 件号 runs without gaps, that 保管期限 uses a term from your own schedule, that 形成日期 parses and matches the register's year, and that items past the transfer deadline you configure are surfaced.
 
+## Install
+
+```sh
+dsh plugin --profile <name> add dsh-archive-check
+dsh --profile <name> --dump-config | grep 'dsh-archive-check'
+```
+
 ## What it looks like
 
 ![Terminal demo of dsh-archive-check: real output over its AR-002 fixture](https://raw.githubusercontent.com/PerryLink/dsh-archive-check/main/docs/assets/dsh-archive-check-hero.png)
@@ -85,13 +92,6 @@ plus the fonds and year it covers — applies a versioned rule pack, and returns
 | `AR-005` | 形成日期 parses, and its year matches the register's year | warn | principle |
 | `AR-006` | the register declares its fonds and year | warn | principle |
 | `AR-007` | items past your configured transfer deadline (off by default) | info | local |
-
-## Install
-
-```sh
-dsh plugin --profile <name> add dsh-archive-check
-dsh --profile <name> --dump-config | grep 'dsh-archive-check'
-```
 
 ## Configuration
 
