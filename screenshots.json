@@ -1,0 +1,14 @@
+[
+  {
+    "path": "docs/assets/dsh-archive-check-hero.png",
+    "kind": "hero",
+    "alt": "dsh-archive-check terminal output",
+    "caption": "Real dsh-archive-check checker output; 33 tests passed."
+  },
+  {
+    "path": "docs/assets/dsh-archive-check-demo.gif",
+    "kind": "demo",
+    "alt": "Animated dsh-archive-check terminal session",
+    "caption": "The same run, assembled line by line."
+  }
+]
