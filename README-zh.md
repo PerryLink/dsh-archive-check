@@ -42,28 +42,25 @@ dsh plugin --profile <name> add dsh-archive-check
 
 **边界（中文译文，以英文原文为准）：** 本插件核对一份**归档登记表**，范围限于登记表可以机械判定的事项——每条是否著录得足够完整，能够被归档并再次查到，档号是否唯一，件号是否连续无缺号，保管期限用词是否取自本机构的期限表，形成日期是否可解析并与登记年度一致。它**不**判定某份文件是否应当归档，也不判定其应为何种保管期限——那些是档案人员的判断。
 
-> ### ⚠️ Three things this plugin refuses to do, and why
+> ### ⚠️ 本插件拒绝做的三件事及理由（以英文原文为准）
 >
-> **1. It never decides which retention period a document deserves.** There is **no single national
-> retention table** you can apply. 《档案法实施条例》第十九条第二款 and 国家档案局令第8号第十二条 require each
-> institution to compile its own 归档范围 and 保管期限表 and have it approved by the档案 authority; and
-> 国家档案局令第10号第十一条 says the enterprise figures are a **minimum** — an enterprise may lawfully
-> choose a *longer* period. So `AR-003` checks only that the wording is one you have configured, and a
-> test asserts that the pack says a longer period "is not an error".
+> **1. 它从不判定一份文件应适用哪个保管期限。** 不存在可供你直接套用的**单一国家保管期限表**。
+> 《档案法实施条例》第十九条第二款与国家档案局令第8号第十二条要求各机构自行编制其归档范围与
+> 保管期限表，并报档案主管部门批准；国家档案局令第10号第十一条规定，企业相关数字是**最低要求**——
+> 企业可以合法选择*更长*的期限。因此，`AR-003` 只核对措辞是否为你所配置的措辞，并有测试断言
+> 规则包写明更长期限“不是错误”。
 >
-> **2. It puts the transfer years where they belong.** The 20-year / 10-year figures are in
-> **《档案法实施条例》第二十条第二款**, keyed to the *receiving archive's level*, not to whether the unit
-> is an enterprise. 《档案法》第十五条 contains **no year figure at all** — it says only "按照国家有关规定，
-> 定期". Attributing "满20年" to the law's article 15 would be fabrication, and a test asserts the pack
-> does not.
+> **2. 它把移交年限放在其应属的位置。** 20 年 / 10 年这两个数字出自
+> **《档案法实施条例》第二十条第二款**，对应的是*接收档案馆的级别*，而不是该单位是否为企业。
+> 《档案法》第十五条**完全没有年限数字**——它只说“按照国家有关规定，定期”。把“满20年”归到该法
+> 第十五条会构成伪造，并有测试断言规则包不会这样做。
 >
-> **3. It does not use the outdated first article.** 国家档案局令第8号's 第一条 cites the 1999
-> 《档案法实施办法》, which the 2024 条例 (国务院令第772号) repealed in its 第五十二条. The pack never cites it,
-> and a test asserts that.
+> **3. 它不使用过时的第一条。** 国家档案局令第8号的第一条援引 1999 年《档案法实施办法》，
+> 而 2024 年条例（国务院令第772号）已在第五十二条废止该办法。规则包从不援引它，并有测试对此
+> 作出断言。
 >
-> Two lists are yours, not the law's: the required description fields (`AR-001`) and your retention
-> vocabulary (`AR-003`). Both ship **empty**, and a rule whose list is unset reports itself in `skipped`
-> rather than passing silently.
+> 有两份清单是你的，而不是法律规定的：必填著录字段（`AR-001`）与你的保管期限词汇表（`AR-003`）。
+> 两者出厂均为**空**，清单未配置的规则会在 `skipped` 中自行报告，而不是静默通过。
 
 ## Compatibility
 
