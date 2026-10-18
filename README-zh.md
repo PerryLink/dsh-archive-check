@@ -40,11 +40,7 @@ dsh plugin --profile <name> add dsh-archive-check
 | 《企业文件材料归档范围和档案保管期限规定》 | 国家档案局令第10号 | AR-003 |
 | 《中华人民共和国档案法》 | 2020年修订（主席令第四十七号） | AR-007 |
 
-**Boundary:** this plugin checks one **归档登记表** (filing register) for the things a register can be
-held to mechanically — that each item is described completely enough to be filed and found again, that
-档号 is unique, that 件号 runs without gaps, that retention terms come from your schedule, and that
-形成日期 parses and matches the register's year. It does **not** decide whether a particular document
-belonged in the archive, nor which retention period it deserves. Those are the archivist's judgements.
+**边界（中文译文，以英文原文为准）：** 本插件核对一份**归档登记表**，范围限于登记表可以机械判定的事项——每条是否著录得足够完整，能够被归档并再次查到，档号是否唯一，件号是否连续无缺号，保管期限用词是否取自本机构的期限表，形成日期是否可解析并与登记年度一致。它**不**判定某份文件是否应当归档，也不判定其应为何种保管期限——那些是档案人员的判断。
 
 > ### ⚠️ Three things this plugin refuses to do, and why
 >
