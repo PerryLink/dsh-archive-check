@@ -1,5 +1,12 @@
 # dsh-archive-check — 档案归档完整性与保管期限核对
 
+[English](README.md) · [简体中文](README-zh.md) · [Español](README-es.md) · [Português](README-pt.md) · [हिन्दी](README-hi.md)
+
+```sh
+dsh plugin --profile <name> add dsh-archive-check
+```
+
+
 [![DSH Market](https://raw.githubusercontent.com/2BingLing/dsh-market/master/assets/readme/badge-listed-en.svg)](https://dsh.market/)
 
 `dsh-archive-check` 读取一份归档登记表——登记表自带的栏目逐条列出，加上它所覆盖的全宗与年度——核对登记表自身可以机械判定的事项：每条是否填写了本机构配置的著录栏目、档号在同一登记范围内是否唯一、件号是否连续无缺号、保管期限是否使用本机构期限表的用词、形成日期是否可解析并与登记年度一致，以及是否报出已过本机构配置的移交期限的条目。

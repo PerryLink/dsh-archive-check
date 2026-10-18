@@ -1,5 +1,7 @@
 # dsh-archive-check — Archive filing register completeness and retention period check
 
+[English](README.md) · [简体中文](README-zh.md) · [Español](README-es.md) · [Português](README-pt.md) · [हिन्दी](README-hi.md)
+
 [![DSH Market](https://raw.githubusercontent.com/2BingLing/dsh-market/master/assets/readme/badge-listed-en.svg)](https://dsh.market/)
 
 `dsh-archive-check` reads one 归档登记表 (filing register) — the items with the columns the register carries, plus the fonds and the year it covers — and checks what a register can be held to mechanically: that each item carries the description fields you configure, that 档号 is unique within the register, that 件号 runs without gaps, that 保管期限 uses a term from your own schedule, that 形成日期 parses and matches the register's year, and that items past the transfer deadline you configure are surfaced.
