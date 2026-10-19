@@ -28,6 +28,34 @@ dsh plugin --profile <name> add dsh-archive-check
 下表是示例集：第一行是详细走查，其余行是简短案例。
 
 
+#### 详细输出
+
+**工具** `archive_check`
+
+**输入**
+
+~~~json
+{"fonds":"某单位","year":2026,"items":[{"档号":"A-2026-001","题名":"","保管期限":"永久", ...}]}
+~~~
+ 
+**输出**
+
+~~~json
+{
+  "id": "dsh-archive-check.AR-001.de09b5a6",
+  "ruleId": "AR-001",
+  "severity": "info",
+  "locator": {
+    "row": 1
+  },
+  "found": "第 1 行缺少 题名",
+  "expected": "按本机构配置，归档条目应著录 档号、题名、保管期限",
+  "fix": "补齐著录项目；本条只核对字段是否存在，不判断著录内容是否准确"
+}
+~~~
+
+*来源 `dsh-archive-check/tests/fixtures/AR-001/AR-001-unsafe.json; dsh-archive-check/tests/fixtures/AR-001/cases.json; dsh-archive-check/rules/archive-check.yaml; dsh-archive-check/tests/index.test.ts`*
+
 | 你会问 | 它怎么答 |
 |---|---|
 | 我没有配置必填的著录栏目，著录核对会静默通过吗？ | 不会。`requiredFields` 为空时，`AR-001` 会把自己报进 `skipped`，因此空的差异清单不会被读成「没有缺项」。填入本机构的栏目名之后，它只核对每条是否填写了这些栏目（空串视为未填），不判断著录内容是否准确。 |

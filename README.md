@@ -28,6 +28,34 @@ dsh --profile <name> --dump-config | grep 'dsh-archive-check'
 
 The table below is the example set: the first row is the detailed walkthrough, the remaining rows are short cases.
 
+#### Detailed output
+
+**Tool** `archive_check`
+
+**Input**
+
+~~~json
+{"fonds":"某单位","year":2026,"items":[{"档号":"A-2026-001","题名":"","保管期限":"永久", ...}]}
+~~~
+ 
+**Output**
+
+~~~json
+{
+  "id": "dsh-archive-check.AR-001.de09b5a6",
+  "ruleId": "AR-001",
+  "severity": "info",
+  "locator": {
+    "row": 1
+  },
+  "found": "第 1 行缺少 题名",
+  "expected": "按本机构配置，归档条目应著录 档号、题名、保管期限",
+  "fix": "补齐著录项目；本条只核对字段是否存在，不判断著录内容是否准确"
+}
+~~~
+
+*Observed from `dsh-archive-check/tests/fixtures/AR-001/AR-001-unsafe.json; dsh-archive-check/tests/fixtures/AR-001/cases.json; dsh-archive-check/rules/archive-check.yaml; dsh-archive-check/tests/index.test.ts`*
+
 | You ask | What it answers |
 |---|---|
 | I have configured no required description fields. Is the description check passing silently? | No. While `requiredFields` is empty, `AR-001` reports itself in `skipped`, so an empty difference list is not read as “nothing is missing”. Once you list your own column names, it checks only that each field is filled on every item — an empty string counts as unfilled — and it does not judge whether the description is accurate. |

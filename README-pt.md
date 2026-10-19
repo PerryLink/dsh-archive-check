@@ -28,6 +28,34 @@ Saída real deste plugin sobre o seu próprio fixture de teste `AR-002` — não
 A tabela abaixo é o conjunto de exemplos: a primeira linha é o caso detalhado e as demais são casos curtos.
 
 
+#### Saída detalhada
+
+**Ferramenta** `archive_check`
+
+**Entrada**
+
+~~~json
+{"fonds":"某单位","year":2026,"items":[{"档号":"A-2026-001","题名":"","保管期限":"永久", ...}]}
+~~~
+ 
+**Saída**
+
+~~~json
+{
+  "id": "dsh-archive-check.AR-001.de09b5a6",
+  "ruleId": "AR-001",
+  "severity": "info",
+  "locator": {
+    "row": 1
+  },
+  "found": "第 1 行缺少 题名",
+  "expected": "按本机构配置，归档条目应著录 档号、题名、保管期限",
+  "fix": "补齐著录项目；本条只核对字段是否存在，不判断著录内容是否准确"
+}
+~~~
+
+*Observado em `dsh-archive-check/tests/fixtures/AR-001/AR-001-unsafe.json; dsh-archive-check/tests/fixtures/AR-001/cases.json; dsh-archive-check/rules/archive-check.yaml; dsh-archive-check/tests/index.test.ts`*
+
 | Você pergunta | O que ele responde |
 |---|---|
 | Não configurei nenhum campo de descrição obrigatório. A verificação da descrição passa em silêncio? | Não. Enquanto `requiredFields` estiver vazio, o `AR-001` declara-se em `skipped`, de modo que uma lista de diferenças vazia não é lida como «não falta nada». Depois de indicar os nomes das suas colunas, verifica apenas que cada campo está preenchido em cada item —uma cadeia vazia conta como não preenchido— e não julga se a descrição está correta. |
