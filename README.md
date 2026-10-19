@@ -15,13 +15,17 @@ dsh --profile <name> --dump-config | grep 'dsh-archive-check'
 
 ## What it looks like
 
-![Terminal demo of dsh-archive-check: real output over its AR-002 fixture](https://raw.githubusercontent.com/PerryLink/dsh-archive-check/main/docs/assets/dsh-archive-check-hero.png)
+![Workflow diagram for dsh-archive-check: document → rule pack → findings.](docs/assets/dsh-archive-check-flow.svg)
 
-![Animated terminal demo of dsh-archive-check](https://raw.githubusercontent.com/PerryLink/dsh-archive-check/main/docs/assets/dsh-archive-check-demo.gif)
+*Workflow overview: document → rule pack → findings. The examples below use the real command surface.*
 
-Real output from this plugin over its own `AR-002` test fixture — not a mock-up. The rule pack ships no invented quotations, so a finding names both the clause it applied and the fact that the clause text was not obtained.
+
 
 ## What it answers
+
+### Examples
+
+The table below is the example set: the first row is the detailed walkthrough, the remaining rows are short cases.
 
 | You ask | What it answers |
 |---|---|
