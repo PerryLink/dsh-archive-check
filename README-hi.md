@@ -8,6 +8,7 @@ dsh plugin --profile <name> add dsh-archive-check
 
 
 [![DSH Market](https://raw.githubusercontent.com/2BingLing/dsh-market/master/assets/readme/badge-listed-en.svg)](https://dsh.market/)
+[![dshfind](https://dshfind.com/api/badge/PerryLink/dsh-archive-check?metric=downloads)](https://dshfind.com/en/plugins/PerryLink/dsh-archive-check?ref=badge)
 
 `dsh-archive-check` एक 归档登记表 (फाइलिंग रजिस्टर) पढ़ता है — रजिस्टर में जो कॉलम हैं उनके साथ प्रत्येक प्रविष्टि, तथा वह जिस फंड और वर्ष को समेटता है — और वह जाँचता है जो एक रजिस्टर से यंत्रवत् अपेक्षित किया जा सकता है: क्या प्रत्येक प्रविष्टि में आपके द्वारा कॉन्फ़िगर किए गए विवरण-कॉलम भरे हैं, क्या 档号 रजिस्टर के भीतर अद्वितीय है, क्या 件号 बिना अंतराल के चलता है, क्या 保管期限 आपकी ही अवधि-सूची का कोई शब्द है, क्या 形成日期 पढ़ी जा सकती है और रजिस्टर के वर्ष से मेल खाती है, और क्या आपके कॉन्फ़िगर किए गए हस्तांतरण-काल की अवधि पूरी कर चुकी प्रविष्टियाँ दर्ज होती हैं।
 
