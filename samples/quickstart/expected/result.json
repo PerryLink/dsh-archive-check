@@ -1,0 +1,10 @@
+{
+  "tool": "archive_check",
+  "issueCount": 0,
+  "summary": {
+    "error": 0,
+    "warn": 0,
+    "info": 0
+  },
+  "skippedCount": 7
+}
