@@ -1,8 +1,8 @@
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-archive-check-flow-dark.svg">
-  <img src="docs/assets/dsh-archive-check-flow-light.svg" width="100%" alt="Flujo de datos de dsh-archive-check: registro de archivo (JSON/YAML) → parseMaterial → paquete de reglas AR-001…AR-007 → runCheck → informe (found/expected/fix + skipped); solo diferencias, sin veredicto, el original nunca se modifica">
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-archive-check-hero-en-dark.webp">
+  <img src="docs/assets/dsh-archive-check-hero-en-light.webp" width="100%" alt="Banner de dsh-archive-check: a la izquierda, el nombre y el valor; a la derecha, ① el registro de archivo (n.º de archivo, título, plazo, n.º de pieza, fecha; se marcan el número repetido y el número de pieza ausente) → ② la lista de siete reglas (AR-002/AR-004 diferencia, AR-005/AR-006 sin diferencia, AR-001/AR-003/AR-007 sin configurar) → ③ la tarjeta de hallazgo (AR-004, fila 3, falta la pieza 3) y la lista de no ejecutadas; una lista de diferencias vacía no significa que todo esté bien y el veredicto queda en manos de la persona revisora">
 </picture>
 
 # dsh-archive-check
@@ -37,6 +37,11 @@ dsh plugin --profile <name> add dsh-archive-check
 ## Qué es
 
 `dsh-archive-check` lee un 归档登记表 (registro de archivo) —los asientos con las columnas que el propio registro trae, más el fondo y el año que cubre— y comprueba lo que un registro puede sostener mecánicamente: que cada asiento lleve los campos de descripción que usted configure, que el 档号 sea único dentro del registro, que el 件号 corra sin huecos, que el 保管期限 use un término de su propia tabla de plazos, que el 形成日期 se pueda analizar y coincida con el año del registro, y que se señalen los asientos que hayan superado el plazo de transferencia que usted configure. Usted entrega el material original (una tabla, un registro o un documento; Excel puede convertirse antes a JSON/YAML, incluso en el chat si la plataforma lo permite) y recibe una lista de «qué fila, qué columna, qué falta». No decide conformidad, no atribuye responsabilidad, no sustituye al revisor —y jamás modifica el original.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-archive-check-flow-v5-dark.svg">
+  <img src="docs/assets/dsh-archive-check-flow-v5-light.svg" width="100%" alt="Estructura de dsh-archive-check: las siete reglas a la izquierda, cada una con el campo que lee, la cláusula que cita y el tipo de fundamento; los cinco documentos y sus once cláusulas literales a la derecha; las líneas continuas son la base principal y las discontinuas la base adicional; el tipo de fundamento limita la gravedad; una ejecución muestra AR-002/AR-004 con diferencia, AR-005/AR-006 sin diferencia y AR-001/AR-003/AR-007 sin configurar; cada diferencia lleva fila, columna y cláusula, y cada comprobación no ejecutada indica el motivo">
+</picture>
 
 ## Instalación en tres pasos
 
@@ -316,7 +321,7 @@ pnpm run check:readmes   # consistencia de los README en cinco idiomas
 node ../scripts/sync-shared.mjs dsh-archive-check   # refresca src/shared desde ../_shared
 ```
 
-El paquete de reglas es dato, no código: edita `rules/*.yaml` para cambiar el conjunto de reglas sin tocar TypeScript; el paquete se valida al cargar, no se confía en él. Las imágenes del README se generan programáticamente con [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py) (Python + Pillow) y pueden reejecutarse sin riesgo; este plugin no tiene UI, así que el hero es un diagrama de flujo SVG escrito a mano (par claro/oscuro, solo tokens de la superficie de comandos).
+El paquete de reglas es dato, no código: edita `rules/*.yaml` para cambiar el conjunto de reglas sin tocar TypeScript; el paquete se valida al cargar, no se confía en él. Las imágenes del README se generan programáticamente con [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py) (Pillow para el hero localizado y un SVG escrito a mano para la figura de estructura) y pueden reejecutarse sin riesgo; este plugin no tiene UI y la figura de estructura solo usa tokens de la superficie de comandos, identificadores de reglas/campos/cláusulas y breves leyendas en inglés.
 
 Topics: `dsh`, `dsh-plugin`, `deepseek-harness`, `cordis`, `archive`
 

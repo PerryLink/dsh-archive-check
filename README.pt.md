@@ -1,8 +1,8 @@
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-archive-check-flow-dark.svg">
-  <img src="docs/assets/dsh-archive-check-flow-light.svg" width="100%" alt="Fluxo de dados do dsh-archive-check: registo de arquivo (JSON/YAML) → parseMaterial → pacote de regras AR-001…AR-007 → runCheck → relatório (found/expected/fix + skipped); apenas diferenças, sem veredicto, o original nunca é modificado">
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-archive-check-hero-en-dark.webp">
+  <img src="docs/assets/dsh-archive-check-hero-en-light.webp" width="100%" alt="Banner do dsh-archive-check: à esquerda, o nome e o valor; à direita, ① o registo de arquivo (n.º de arquivo, título, prazo, n.º de item, data; o número repetido e o número de item em falta estão assinalados) → ② a lista das sete regras (AR-002/AR-004 diferença, AR-005/AR-006 sem diferença, AR-001/AR-003/AR-007 não configuradas) → ③ o cartão de ocorrência (AR-004, linha 3, falta o item 3) e a lista de não executadas; uma lista de diferenças vazia não significa «tudo bem» e a decisão fica com quem revê">
 </picture>
 
 # dsh-archive-check
@@ -37,6 +37,11 @@ dsh plugin --profile <name> add dsh-archive-check
 ## O que é
 
 `dsh-archive-check` lê um 归档登记表 (registo de arquivo) — os itens com as colunas que o próprio registo traz, mais o fundo e o ano que abrange — e verifica o que um registo pode sustentar mecanicamente: se cada item traz os campos de descrição que você configurar, se o 档号 é único dentro do registo, se o 件号 corre sem falhas, se o 保管期限 usa um termo da sua própria tabela de prazos, se o 形成日期 é analisável e coincide com o ano do registo, e se são assinalados os itens que passaram do prazo de transferência que você configurar. Você entrega o material original (uma tabela, um registo ou um documento; Excel pode ser convertido antes para JSON/YAML, até no chat se a plataforma permitir) e recebe uma lista de «que linha, que coluna, o que falta». Não decide conformidade, não atribui responsabilidade, não substitui o revisor — e jamais modifica o original.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-archive-check-flow-v5-dark.svg">
+  <img src="docs/assets/dsh-archive-check-flow-v5-light.svg" width="100%" alt="Estrutura do dsh-archive-check: as sete regras à esquerda, cada uma com o campo que lê, a cláusula que cita e o tipo de fundamento; os cinco documentos e as suas onze cláusulas literais à direita; as linhas contínuas são a base principal e as tracejadas a base adicional; o tipo de fundamento limita a gravidade; uma execução mostra AR-002/AR-004 com diferença, AR-005/AR-006 sem diferença e AR-001/AR-003/AR-007 não configuradas; cada diferença leva linha, coluna e cláusula, e cada verificação não executada indica o motivo">
+</picture>
 
 ## Instalação em três passos
 
@@ -316,7 +321,7 @@ pnpm run check:readmes   # consistência dos README em cinco idiomas
 node ../scripts/sync-shared.mjs dsh-archive-check   # refresca src/shared a partir de ../_shared
 ```
 
-O pacote de regras é dado, não código: edite `rules/*.yaml` para trocar o conjunto de regras sem tocar em TypeScript; o pacote é validado ao carregar, não é confiado. As imagens do README são geradas programaticamente por [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py) (Python + Pillow) e podem ser reexecutadas sem risco; este plugin não tem UI, por isso o hero é um diagrama de fluxo SVG escrito à mão (par claro/escuro, apenas tokens da superfície de comandos).
+O pacote de regras é dado, não código: edite `rules/*.yaml` para trocar o conjunto de regras sem tocar em TypeScript; o pacote é validado ao carregar, não é confiado. As imagens do README são geradas programaticamente por [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py) (Pillow para o hero localizado e um SVG escrito à mão para a figura de estrutura) e podem ser reexecutadas sem risco; este plugin não tem UI e a figura de estrutura usa apenas tokens da superfície de comandos, identificadores de regras/campos/cláusulas e breves legendas em inglês.
 
 Topics: `dsh`, `dsh-plugin`, `deepseek-harness`, `cordis`, `archive`
 

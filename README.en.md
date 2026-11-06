@@ -1,8 +1,8 @@
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-archive-check-flow-dark.svg">
-  <img src="docs/assets/dsh-archive-check-flow-light.svg" width="100%" alt="dsh-archive-check data flow: filing register (JSON/YAML) → parseMaterial → AR-001…AR-007 rule pack → runCheck → report (found/expected/fix + skipped); differences only, no verdict, the original is never modified">
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-archive-check-hero-en-dark.webp">
+  <img src="docs/assets/dsh-archive-check-hero-en-light.webp" width="100%" alt="dsh-archive-check banner: left, the plugin name and its value; right, ① the filing register (archive no., title, retention, item no., date; the repeated archive number and the missing item number are marked) → ② the seven-rule checklist (AR-002/AR-004 diff, AR-005/AR-006 clean, AR-001/AR-003/AR-007 unset) → ③ the located finding card (AR-004, row 3, missing item 3) and the not-run list; an empty issue list is never all clear, and the verdict stays human">
 </picture>
 
 # dsh-archive-check
@@ -37,6 +37,11 @@ dsh plugin --profile <name> add dsh-archive-check
 ## What it is
 
 `dsh-archive-check` reads one filing register — the items with the columns the register carries, plus the fonds and the year it covers — and checks what a register can be held to mechanically: that each item carries the description fields you configure, that the archive number is unique within the register, that item numbers run without gaps, that the retention period uses a term from your own schedule, that the creation date parses and matches the register's year, and that items past the transfer deadline you configure are surfaced. You hand it the source material (a table, register or document; Excel can be converted to JSON/YAML first, in chat if the platform supports it) and it returns a list of differences. It does not decide compliance, does not assign liability, does not replace the reviewer — and it never modifies the original.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-archive-check-flow-v5-dark.svg">
+  <img src="docs/assets/dsh-archive-check-flow-v5-light.svg" width="100%" alt="dsh-archive-check structure: seven rules on the left, each with the field it reads, its primary clause and its evidence kind; five documents and their eleven verbatim clauses on the right; solid links are primary bases, dashed links are alsoBasis; the evidence kind caps severity; one run shows AR-002/AR-004 diff, AR-005/AR-006 clean and AR-001/AR-003/AR-007 unset; issues carry row, column and clause, and every check that did not run states why">
+</picture>
 
 ## Three-step setup
 
@@ -344,7 +349,7 @@ pnpm run check:readmes   # five-language README consistency
 node ../scripts/sync-shared.mjs dsh-archive-check   # refresh src/shared from ../_shared
 ```
 
-The rule pack is data, not code: edit `rules/*.yaml` to switch the rule set without touching TypeScript; the pack is validated on load, not trusted. README images are generated programmatically by [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py) (Python + Pillow) and can be re-run safely; this plugin has no UI, so the hero is a hand-written SVG flow diagram (light + dark pair, command-surface tokens only).
+The rule pack is data, not code: edit `rules/*.yaml` to switch the rule set without touching TypeScript; the pack is validated on load, not trusted. README images are generated programmatically by [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py) (Pillow for the localized hero, a hand-written SVG for the structure figure) and can be re-run safely; this plugin has no UI, and the structure figure uses command-surface tokens, rule/field/clause identifiers and short English captions only.
 
 Topics: `dsh`, `dsh-plugin`, `deepseek-harness`, `cordis`, `archive`
 

@@ -1,8 +1,8 @@
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-archive-check-flow-dark.svg">
-  <img src="docs/assets/dsh-archive-check-flow-light.svg" width="100%" alt="dsh-archive-check 数据流：归档登记表（JSON/YAML）→ parseMaterial 读取 → AR-001…AR-007 规则包 → runCheck → 报告（found/expected/fix + skipped）；只列差异，不下结论，不改原件">
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-archive-check-hero-zh-dark.webp">
+  <img src="docs/assets/dsh-archive-check-hero-zh-light.webp" width="100%" alt="dsh-archive-check 横幅：左侧是插件名与价值说明；右侧是①归档登记表（档号、题名、保管期限、件号、形成日期，档号重复与件号缺号两格被标出）→②七条规则清单（AR-002/AR-004 差异、AR-005/AR-006 无差异、AR-001/AR-003/AR-007 未配置）→③判定卡（AR-004 第 3 行件号缺 3）与未执行清单；空 issues 不等于没问题，结论留给审核人">
 </picture>
 
 # dsh-archive-check
@@ -37,6 +37,11 @@ dsh plugin --profile <name> add dsh-archive-check
 ## 它是什么
 
 `dsh-archive-check` 读取一份归档登记表——登记表自带的栏目逐条列出，加上它所覆盖的全宗与年度——核对登记表自身可以机械判定的事项：每条是否填写了本机构配置的著录栏目、档号在同一登记范围内是否唯一、件号是否连续无缺号、保管期限是否使用本机构期限表的用词、形成日期是否可解析并与登记年度一致，以及是否报出已过本机构配置移交期限的条目。你交出原始材料（表格、清单或文书；Excel 可先转成 JSON/YAML，对话里也能代转），它返回一份「哪一行、哪一栏、差什么」的差异清单。它不下合规结论、不认定责任、不替代审核人，也绝不修改原件。
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-archive-check-flow-v5-dark.svg">
+  <img src="docs/assets/dsh-archive-check-flow-v5-light.svg" width="100%" alt="dsh-archive-check 结构图：左侧七条规则各标出所读字段、主引条款与依据类型，右侧五份文件列其十一条逐字引文；实线为主依据，虚线为兼引依据；依据类型封顶严重级；底部一次运行中 AR-002/AR-004 为差异、AR-005/AR-006 无差异、AR-001/AR-003/AR-007 未配置；issues 带行号、栏名与依据，未执行的规则逐条附原因">
+</picture>
 
 ## 三步上手
 
@@ -312,7 +317,7 @@ pnpm run check:readmes   # 五语 README 一致性
 node ../scripts/sync-shared.mjs dsh-archive-check   # 从 ../_shared 刷新 src/shared
 ```
 
-规则包是数据不是代码：改 `rules/*.yaml` 即切换规则集，无需动 TypeScript；规则包在加载期校验，而非被信任。README 配图由 [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py) 程序化生成（Python + Pillow），可重复执行；本插件无 UI，hero 为手绘 SVG 流程图（深浅双版，图内仅命令面 token）。
+规则包是数据不是代码：改 `rules/*.yaml` 即切换规则集，无需动 TypeScript；规则包在加载期校验，而非被信任。README 配图由 [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py) 程序化生成（Pillow 画本地化 hero、手写 SVG 画结构图），可重复执行；本插件无 UI，结构图只用命令面 token、规则/字段/条款标识与简短英文注记。
 
 Topics：`dsh`, `dsh-plugin`, `deepseek-harness`, `cordis`, `archive`
 
