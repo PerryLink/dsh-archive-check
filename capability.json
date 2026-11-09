@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "tier": "L2-document",
+  "input_formats": [
+    "json",
+    "yaml"
+  ],
+  "outputs": [
+    "markdown",
+    "json"
+  ],
+  "rules": {
+    "total": 7
+  },
+  "limits": [
+    "只读 JSON/YAML 目录，不读 docx/xlsx",
+    "无真实档案目录语料，P/R 未测"
+  ]
+}
