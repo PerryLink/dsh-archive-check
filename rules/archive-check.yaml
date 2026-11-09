@@ -54,9 +54,9 @@ rules:
         kind: direct
         source: https://www.gov.cn/zhengce/zhengceku/202401/content_6928164.htm
     params:
-      requiredFields: []
+      requiredFields: ["序号", "档号", "文号", "责任者", "题名", "日期", "密级", "页数", "备注"]
     note: >-
-      requiredFields 出厂为空，表示**未配置**，本条进 skipped。
+      requiredFields 默认取 DA/T 22—2015 5.5.2 的目录项目；机构可在规则库中覆盖。
       DA/T 22—2015 5.5.2 给出了目录的九个项目（序号、档号、文号、责任者、题名、日期、密级、页数、备注），
       但**各机构的必填范围不同**，故由使用方填入本机构的必填栏目（须与材料中的列名一致）。
       本条只核对字段是否存在（空串视为未填），**不判断著录内容是否准确**。
@@ -102,9 +102,9 @@ rules:
         kind: direct
         source: https://www.gov.cn/gongbao/content/2013/content_2361577.htm
     params:
-      retentionTerms: []
+      retentionTerms: ["永久", "定期30年", "定期10年"]
     note: >-
-      retentionTerms 出厂为空，表示**未配置**，本条进 skipped。
+      retentionTerms 默认取国家档案局令第8号第六条的「永久 / 定期30年 / 定期10年」；机构可覆盖。
       **框架有明文，具体划分权在单位**：令第8号第六条把期限定为"永久、定期两种，定期一般分为30年、10年"；
       但《实施条例》第十九条第二款与令第8号第十二条要求**各单位自编期限表并报同级档案主管部门审核同意**。
       企业侧更明确：令第10号第十一条写的是"**最低期限**"，企业可选择**高于**规定期限——**这不是错误**。

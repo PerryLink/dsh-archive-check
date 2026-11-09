@@ -139,10 +139,10 @@ describe('rule pack', () => {
     expect(ruleset.rules.find((rule) => rule.id === 'AR-003')?.note).toContain('这不是错误')
   })
 
-  it('ships both local vocabularies empty', async () => {
+  it('ships the national descriptive and retention baselines', async () => {
     const ruleset = await loadPack()
-    expect(ruleset.rules.find((rule) => rule.id === 'AR-001')?.params.requiredFields).toEqual([])
-    expect(ruleset.rules.find((rule) => rule.id === 'AR-003')?.params.retentionTerms).toEqual([])
+    expect(ruleset.rules.find((rule) => rule.id === 'AR-001')?.params.requiredFields).toContain('档号')
+    expect(ruleset.rules.find((rule) => rule.id === 'AR-003')?.params.retentionTerms).toContain('永久')
   })
 
   it('refuses a rule pack that overstates a principle-derived check', () => {
@@ -263,14 +263,16 @@ describe('retention vocabulary', () => {
 })
 
 describe('skipped reporting', () => {
-  it('admits that the descriptive list is not configured', async () => {
+  it('uses the DA/T 22 descriptive baseline and reports missing fields', async () => {
     const report = await runFixture(JSON.stringify(GOOD), 'inline')
-    expect(report.skipped.find((entry) => entry.rule === 'AR-001')?.reason).toContain('未配置 requiredFields')
+    expect(issuesOf(report, 'AR-001').length).toBeGreaterThan(0)
+    expect(report.skipped.find((entry) => entry.rule === 'AR-001')).toBeUndefined()
   })
 
-  it('admits that the retention vocabulary is not configured', async () => {
+  it('accepts the national retention vocabulary by default', async () => {
     const report = await runFixture(JSON.stringify(GOOD), 'inline')
-    expect(report.skipped.find((entry) => entry.rule === 'AR-003')?.reason).toContain('retentionTerms')
+    expect(issuesOf(report, 'AR-003')).toHaveLength(0)
+    expect(report.skipped.find((entry) => entry.rule === 'AR-003')).toBeUndefined()
   })
 
   it('warns when the register declares no year', () => {
