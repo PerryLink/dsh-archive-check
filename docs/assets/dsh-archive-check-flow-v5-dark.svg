@@ -1,0 +1,149 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="660" viewBox="0 0 1100 660" role="img" aria-labelledby="title desc">
+<title id="title">dsh-archive-check clause cross-reference</title>
+<desc id="desc">Seven archive checks mapped to the eleven verbatim clauses they cite in five documents. Solid links are primary bases, dashed links are alsoBasis. Evidence kind caps severity: principle at warn, local config at info. One run shows AR-002 and AR-004 differences, AR-005 and AR-006 clean, AR-001, AR-003 and AR-007 unset; the report lists issues with row, column and clause, and skipped rules with reasons.</desc>
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="0.2" y2="1"><stop offset="0" stop-color="#131a2a"/><stop offset="1" stop-color="#0c1016"/></linearGradient>
+<filter id="soft" x="-30%" y="-30%" width="160%" height="180%"><feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#000000" flood-opacity="0.50"/></filter>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#8496f5"/></marker>
+<pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="1.2" cy="1.2" r="1.2" fill="#2a3346"/></pattern>
+</defs>
+<rect x="0" y="0" width="1100" height="660" fill="url(#bg)"/>
+<rect x="0" y="0" width="1100" height="660" fill="url(#dots)" opacity="0.55"/>
+<text x="44" y="58" fill="#f0f3f9" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="30" font-weight="700">dsh-archive-check</text>
+<text x="44" y="86" fill="#a8b1c4" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="14.5">Seven rules, eleven verbatim clauses, five documents; the evidence kind caps the severity.</text>
+<rect x="835.0" y="32" width="221.0" height="28" rx="14.0" fill="#242d42"/>
+<text x="847.0" y="49.91" fill="#8496f5" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11.5">rules/archive-check.yaml · v2026.1</text>
+<text x="44" y="112" fill="#737b8d" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11">IN · register rows[] · fonds · year · JSON / YAML</text>
+<text x="1056" y="112" fill="#737b8d" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11" text-anchor="end">OUT · issues[] + skipped[]</text>
+<line x1="44" y1="126" x2="1056" y2="126" stroke="#2b3348" stroke-width="1" opacity="0.75"/>
+<text x="44" y="150" fill="#737b8d" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="11" font-weight="700" letter-spacing="1.1">7 RULES · WHAT EACH ONE READS</text>
+<text x="800" y="150" fill="#737b8d" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="11" font-weight="700" letter-spacing="1.1">5 DOCUMENTS · 11 CITED CLAUSES</text>
+<rect x="44" y="160" width="656" height="350" rx="18" fill="#1b2231" stroke="#2e374b" stroke-width="1.5" filter="url(#soft)"/>
+<line x1="56" y1="216" x2="688" y2="216" stroke="#2b3348" stroke-width="1"/>
+<text x="64" y="197.5" fill="#f0f3f9" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="13" font-weight="700">AR-001</text>
+<text x="126" y="191" fill="#f0f3f9" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="13" font-weight="700">required description fields</text>
+<text x="126" y="206.5" fill="#737b8d" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11">requiredFields</text>
+<rect x="414" y="182" width="88" height="22" rx="11" fill="#202839"/>
+<text x="458" y="197" fill="#a8b1c4" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11" text-anchor="middle">5.5.2</text>
+<text x="514" y="192" fill="#737b8d" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="11">local config</text>
+<text x="514" y="208" fill="#8496f5" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11.5" font-weight="700">≤ info</text>
+<circle cx="700" cy="193" r="4.5" fill="#8496f5" stroke="#1b2231" stroke-width="2"/>
+<rect x="56" y="216" width="632" height="46" rx="8" fill="#202839" opacity="0.55"/>
+<line x1="56" y1="262" x2="688" y2="262" stroke="#2b3348" stroke-width="1"/>
+<text x="64" y="243.5" fill="#f0f3f9" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="13" font-weight="700">AR-002</text>
+<text x="126" y="237" fill="#f0f3f9" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="13" font-weight="700">archive number unique</text>
+<text x="126" y="252.5" fill="#737b8d" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11">reference</text>
+<rect x="414" y="228" width="88" height="22" rx="11" fill="#202839"/>
+<text x="458" y="243" fill="#a8b1c4" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11" text-anchor="middle">5.4.1</text>
+<text x="514" y="238" fill="#737b8d" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="11">principle</text>
+<text x="514" y="254" fill="#d9a441" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11.5" font-weight="700">≤ warn</text>
+<circle cx="700" cy="239" r="4.5" fill="#8496f5" stroke="#1b2231" stroke-width="2"/>
+<line x1="56" y1="308" x2="688" y2="308" stroke="#2b3348" stroke-width="1"/>
+<text x="64" y="289.5" fill="#f0f3f9" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="13" font-weight="700">AR-003</text>
+<text x="126" y="283" fill="#f0f3f9" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="13" font-weight="700">retention term in schedule</text>
+<text x="126" y="298.5" fill="#737b8d" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11">retention</text>
+<rect x="414" y="274" width="88" height="22" rx="11" fill="#202839"/>
+<text x="458" y="289" fill="#a8b1c4" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11" text-anchor="middle">art. 6</text>
+<text x="514" y="284" fill="#737b8d" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="11">local config</text>
+<text x="514" y="300" fill="#8496f5" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11.5" font-weight="700">≤ info</text>
+<circle cx="700" cy="285" r="4.5" fill="#8496f5" stroke="#1b2231" stroke-width="2"/>
+<rect x="56" y="308" width="632" height="46" rx="8" fill="#202839" opacity="0.55"/>
+<line x1="56" y1="354" x2="688" y2="354" stroke="#2b3348" stroke-width="1"/>
+<text x="64" y="335.5" fill="#f0f3f9" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="13" font-weight="700">AR-004</text>
+<text x="126" y="329" fill="#f0f3f9" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="13" font-weight="700">item numbers unique, gap-free</text>
+<text x="126" y="344.5" fill="#737b8d" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11">sequence</text>
+<rect x="414" y="320" width="88" height="22" rx="11" fill="#202839"/>
+<text x="458" y="335" fill="#a8b1c4" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11" text-anchor="middle">5.4.3 e)</text>
+<text x="514" y="330" fill="#737b8d" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="11">principle</text>
+<text x="514" y="346" fill="#d9a441" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11.5" font-weight="700">≤ warn</text>
+<circle cx="700" cy="331" r="4.5" fill="#8496f5" stroke="#1b2231" stroke-width="2"/>
+<line x1="56" y1="400" x2="688" y2="400" stroke="#2b3348" stroke-width="1"/>
+<text x="64" y="381.5" fill="#f0f3f9" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="13" font-weight="700">AR-005</text>
+<text x="126" y="375" fill="#f0f3f9" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="13" font-weight="700">date parses, year matches</text>
+<text x="126" y="390.5" fill="#737b8d" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11">formedAt</text>
+<rect x="414" y="366" width="88" height="22" rx="11" fill="#202839"/>
+<text x="458" y="381" fill="#a8b1c4" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11" text-anchor="middle">5.3.1</text>
+<text x="514" y="376" fill="#737b8d" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="11">principle</text>
+<text x="514" y="392" fill="#d9a441" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11.5" font-weight="700">≤ warn</text>
+<circle cx="700" cy="377" r="4.5" fill="#8496f5" stroke="#1b2231" stroke-width="2"/>
+<rect x="56" y="400" width="632" height="46" rx="8" fill="#202839" opacity="0.55"/>
+<line x1="56" y1="446" x2="688" y2="446" stroke="#2b3348" stroke-width="1"/>
+<text x="64" y="427.5" fill="#f0f3f9" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="13" font-weight="700">AR-006</text>
+<text x="126" y="421" fill="#f0f3f9" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="13" font-weight="700">register declares fonds + year</text>
+<text x="126" y="436.5" fill="#737b8d" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11">fonds · year</text>
+<rect x="414" y="412" width="88" height="22" rx="11" fill="#202839"/>
+<text x="458" y="427" fill="#a8b1c4" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11" text-anchor="middle">5.2.2</text>
+<text x="514" y="422" fill="#737b8d" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="11">principle</text>
+<text x="514" y="438" fill="#d9a441" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11.5" font-weight="700">≤ warn</text>
+<circle cx="700" cy="423" r="4.5" fill="#8496f5" stroke="#1b2231" stroke-width="2"/>
+<text x="64" y="473.5" fill="#f0f3f9" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="13" font-weight="700">AR-007</text>
+<text x="126" y="467" fill="#f0f3f9" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="13" font-weight="700">transfer deadline passed</text>
+<text x="126" y="482.5" fill="#737b8d" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11">transferAfterYears</text>
+<rect x="414" y="458" width="88" height="22" rx="11" fill="#202839"/>
+<text x="458" y="473" fill="#a8b1c4" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11" text-anchor="middle">art. 20(2)</text>
+<text x="514" y="468" fill="#737b8d" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="11">local config</text>
+<text x="514" y="484" fill="#8496f5" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11.5" font-weight="700">≤ info</text>
+<circle cx="700" cy="469" r="4.5" fill="#8496f5" stroke="#1b2231" stroke-width="2"/>
+<rect x="800" y="166" width="256" height="80" rx="18" fill="#1b2231" stroke="#2e374b" stroke-width="1.5" filter="url(#soft)"/>
+<rect x="800" y="174" width="3" height="64" rx="1.5" fill="#8496f5"/>
+<text x="816" y="186" fill="#f0f3f9" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="13" font-weight="700">DA/T 22—2015</text>
+<text x="816" y="201" fill="#737b8d" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="11">arrangement rules</text>
+<text x="816" y="218" fill="#a8b1c4" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11">5.2.2 · 5.3.1 · 5.4.1</text>
+<text x="816" y="233" fill="#a8b1c4" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11">5.4.3 e) · 5.5.2</text>
+<rect x="800" y="254" width="256" height="70" rx="18" fill="#1b2231" stroke="#2e374b" stroke-width="1.5" filter="url(#soft)"/>
+<rect x="800" y="262" width="3" height="54" rx="1.5" fill="#8496f5"/>
+<text x="816" y="274" fill="#f0f3f9" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="13" font-weight="700">State Council Order No. 772</text>
+<text x="816" y="289" fill="#737b8d" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="11">implementation regs</text>
+<text x="816" y="306" fill="#a8b1c4" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11">19(1) · 19(2) · 20(2)</text>
+<rect x="800" y="332" width="256" height="52" rx="18" fill="#1b2231" stroke="#2e374b" stroke-width="1.5" filter="url(#soft)"/>
+<rect x="800" y="340" width="3" height="36" rx="1.5" fill="#8496f5"/>
+<text x="816" y="351" fill="#f0f3f9" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="13" font-weight="700">Order No. 8</text>
+<text x="816" y="370" fill="#737b8d" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="11">agency schedules · art. 6</text>
+<rect x="800" y="392" width="256" height="52" rx="18" fill="#1b2231" stroke="#2e374b" stroke-width="1.5" filter="url(#soft)"/>
+<rect x="800" y="400" width="3" height="36" rx="1.5" fill="#8496f5"/>
+<text x="816" y="411" fill="#f0f3f9" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="13" font-weight="700">Order No. 10</text>
+<text x="816" y="430" fill="#737b8d" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="11">enterprise schedules · art. 11</text>
+<rect x="800" y="452" width="256" height="52" rx="18" fill="#1b2231" stroke="#2e374b" stroke-width="1.5" filter="url(#soft)"/>
+<rect x="800" y="460" width="3" height="36" rx="1.5" fill="#8496f5"/>
+<text x="816" y="471" fill="#f0f3f9" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="13" font-weight="700">Archives Law</text>
+<text x="816" y="490" fill="#737b8d" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="11">2020 revision · art. 15</text>
+<path d="M700 193 H712 V184 H797" fill="none" stroke="#8496f5" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#arr)" opacity="0.82"/>
+<path d="M700 193 H719 V270 H797" fill="none" stroke="#8496f5" stroke-width="1.1" stroke-linejoin="round" stroke-dasharray="4 4" marker-end="url(#arr)" opacity="0.45"/>
+<path d="M700 239 H726 V196 H797" fill="none" stroke="#8496f5" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#arr)" opacity="0.82"/>
+<path d="M700 285 H733 V358 H797" fill="none" stroke="#8496f5" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#arr)" opacity="0.82"/>
+<path d="M700 285 H740 V288 H797" fill="none" stroke="#8496f5" stroke-width="1.1" stroke-linejoin="round" stroke-dasharray="4 4" marker-end="url(#arr)" opacity="0.45"/>
+<path d="M700 285 H747 V418 H797" fill="none" stroke="#8496f5" stroke-width="1.1" stroke-linejoin="round" stroke-dasharray="4 4" marker-end="url(#arr)" opacity="0.45"/>
+<path d="M700 331 H754 V208 H797" fill="none" stroke="#8496f5" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#arr)" opacity="0.82"/>
+<path d="M700 377 H761 V220 H797" fill="none" stroke="#8496f5" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#arr)" opacity="0.82"/>
+<path d="M700 423 H768 V232 H797" fill="none" stroke="#8496f5" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#arr)" opacity="0.82"/>
+<path d="M700 469 H775 V306 H797" fill="none" stroke="#8496f5" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#arr)" opacity="0.82"/>
+<path d="M700 469 H782 V478 H797" fill="none" stroke="#8496f5" stroke-width="1.1" stroke-linejoin="round" stroke-dasharray="4 4" marker-end="url(#arr)" opacity="0.45"/>
+<rect x="44" y="524" width="1012" height="70" rx="18" fill="#1b2231" stroke="#2e374b" stroke-width="1.5" filter="url(#soft)"/>
+<text x="60" y="550" fill="#8496f5" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11.5" font-weight="700">runCheck()</text>
+<rect x="152" y="534" width="120" height="30" rx="15" fill="#202839" stroke="#737b8d" stroke-width="1.2" stroke-dasharray="4 3"/>
+<text x="162" y="553" fill="#f0f3f9" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11" font-weight="700">AR-001</text>
+<text x="262" y="553" fill="#737b8d" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11" text-anchor="end">unset</text>
+<rect x="278" y="534" width="120" height="30" rx="15" fill="#2a2216" stroke="#d9a441" stroke-width="1.2"/>
+<text x="288" y="553" fill="#f0f3f9" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11" font-weight="700">AR-002</text>
+<text x="388" y="553" fill="#d9a441" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11" text-anchor="end">diff</text>
+<rect x="404" y="534" width="120" height="30" rx="15" fill="#202839" stroke="#737b8d" stroke-width="1.2" stroke-dasharray="4 3"/>
+<text x="414" y="553" fill="#f0f3f9" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11" font-weight="700">AR-003</text>
+<text x="514" y="553" fill="#737b8d" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11" text-anchor="end">unset</text>
+<rect x="530" y="534" width="120" height="30" rx="15" fill="#2a2216" stroke="#d9a441" stroke-width="1.2"/>
+<text x="540" y="553" fill="#f0f3f9" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11" font-weight="700">AR-004</text>
+<text x="640" y="553" fill="#d9a441" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11" text-anchor="end">diff</text>
+<rect x="656" y="534" width="120" height="30" rx="15" fill="#16281c" stroke="#3fb950" stroke-width="1.2"/>
+<text x="666" y="553" fill="#f0f3f9" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11" font-weight="700">AR-005</text>
+<text x="766" y="553" fill="#3fb950" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11" text-anchor="end">clean</text>
+<rect x="782" y="534" width="120" height="30" rx="15" fill="#16281c" stroke="#3fb950" stroke-width="1.2"/>
+<text x="792" y="553" fill="#f0f3f9" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11" font-weight="700">AR-006</text>
+<text x="892" y="553" fill="#3fb950" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11" text-anchor="end">clean</text>
+<rect x="908" y="534" width="120" height="30" rx="15" fill="#202839" stroke="#737b8d" stroke-width="1.2" stroke-dasharray="4 3"/>
+<text x="918" y="553" fill="#f0f3f9" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11" font-weight="700">AR-007</text>
+<text x="1018" y="553" fill="#737b8d" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11" text-anchor="end">unset</text>
+<text x="60" y="582" fill="#a8b1c4" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="11">issues[] 2 · locator(row, column) · found / expected / fix · basis</text>
+<text x="1056" y="582" fill="#737b8d" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="11" text-anchor="end">skipped[] · rule + reason</text>
+<line x1="44" y1="610" x2="1056" y2="610" stroke="#2b3348" stroke-width="1"/>
+<text x="44" y="630" fill="#a8b1c4" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="11">solid = primary basis · dashed = alsoBasis · excerpt verbatim (≥ 8 chars) · severity follows the evidence</text>
+<text x="44" y="648" fill="#737b8d" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="11">no adjudication · row + column + clause on every issue · original never modified · rulesFile / disabledRules / onlyRules / timeoutMs</text>
+</svg>
