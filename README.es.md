@@ -43,6 +43,11 @@ dsh plugin --profile <name> add dsh-archive-check
   <img src="docs/assets/dsh-archive-check-flow-v5-light.svg" width="100%" alt="Estructura de dsh-archive-check: las siete reglas a la izquierda, cada una con el campo que lee, la cláusula que cita y el tipo de fundamento; los cinco documentos y sus once cláusulas literales a la derecha; las líneas continuas son la base principal y las discontinuas la base adicional; el tipo de fundamento limita la gravedad; una ejecución muestra AR-002/AR-004 con diferencia, AR-005/AR-006 sin diferencia y AR-001/AR-003/AR-007 sin configurar; cada diferencia lleva fila, columna y cláusula, y cada comprobación no ejecutada indica el motivo">
 </picture>
 
+![dsh-archive-check: ejecución real de terminal](docs/assets/dsh-archive-check-demo.gif)
+
+*Repetición animada de una ejecución real registrada en este repositorio.*
+
+
 ## Instalación en tres pasos
 
 1. **Instala**:

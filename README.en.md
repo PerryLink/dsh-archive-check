@@ -116,6 +116,10 @@ register (fonds · year · items) ──archive_check──▶ rule pack AR-001�
 
 ### Examples
 
+![dsh-archive-check: real terminal run](docs/assets/dsh-archive-check-demo.gif)
+
+*Animated replay of a real run recorded in this repository.*
+
 These are the plugin's real entry points; install once, then call one.
 
 **Detailed output** — tool `archive_check`, input:
