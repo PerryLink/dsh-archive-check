@@ -7,6 +7,8 @@
 
 # dsh-archive-check
 
+Current version `0.2.14`.
+
 **Check every row of a filing register for complete description, unique archive numbers, gap-free item numbers, schedule-conform retention terms and parseable creation dates — and get back a list of what is inconsistent, where, and what to fix.**
 
 An archive checker plugin for DeepSeek Harness, built for archivists and office clerks: the rule pack quotes its regulations verbatim, reports only literal differences against the cited clauses, and never decides compliance, never assigns liability, never touches your original.

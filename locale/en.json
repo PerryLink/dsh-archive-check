@@ -1,6 +1,6 @@
 {
   "meta": {
     "title": "Archive filing check",
-    "description": "档案归档完整性与保管期限核对（依据《档案法》及配套规定，仅提示差异，不作出定性结论）"
+    "description": "Check every row of a filing register for complete description, unique archive numbers, gap-free item numbers, schedule-conform retention terms and parseable creation dates — and get back a list of what is inconsistent, where, and what to fix."
   }
 }
