@@ -11,6 +11,8 @@
 
 DeepSeek Harness के लिए अभिलेख-जाँच प्लगइन, अभिलेखागारिकों और कार्यालय लिपिकों के लिए बना: नियम-पैक विनियमों का शब्दशः उद्धरण देता है, उद्धृत धाराओं के सामने केवल शाब्दिक अंतर बताता है, और न अनुपालन तय करता है, न उत्तरदायित्व, न ही मूल दस्तावेज़ को छूता है।
 
+अंतिम सत्यापन: DeepSeek Harness `dsh-v0.2.3-alpha.1` (2026-11-22).
+
 [इंस्टॉल](#तीन-चरणों-में-शुरुआत) · [कॉन्फ़िगरेशन](#कॉन्फ़िगरेशन) · [FAQ](#faq) · [简体中文](README.md) · [English](README.en.md) · [Español](README.es.md) · [Português](README.pt.md) · [हिन्दी](README.hi.md)
 
 [![License](https://img.shields.io/badge/license-Apache--2.0-3366CC?style=flat-square&labelColor=2B3245)](LICENSE)
@@ -46,7 +48,6 @@ dsh plugin --profile <name> add dsh-archive-check
 ![dsh-archive-check का असली टर्मिनल रन](docs/assets/dsh-archive-check-demo.gif)
 
 *इस रिपॉज़िटरी में दर्ज असली रन का एनिमेटेड रीप्ले।*
-
 
 ## तीन चरणों में शुरुआत
 

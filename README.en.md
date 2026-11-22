@@ -11,6 +11,8 @@
 
 An archive checker plugin for DeepSeek Harness, built for archivists and office clerks: the rule pack quotes its regulations verbatim, reports only literal differences against the cited clauses, and never decides compliance, never assigns liability, never touches your original.
 
+Last verified on DeepSeek Harness `dsh-v0.2.3-alpha.1` (2026-11-22).
+
 [Install](#three-step-setup) · [Configuration](#configuration) · [FAQ](#faq) · [简体中文](README.md) · [English](README.en.md) · [Español](README.es.md) · [Português](README.pt.md) · [हिन्दी](README.hi.md)
 
 [![License](https://img.shields.io/badge/license-Apache--2.0-3366CC?style=flat-square&labelColor=2B3245)](LICENSE)
